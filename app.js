@@ -1,3 +1,5 @@
+const Joi = require('joi')
+Joi.objectId = require('joi-objectid')(Joi)
 const mongoose = require('mongoose')
 const genres = require('./routes/genre-route')
 const customers = require('./routes/customer-route')
