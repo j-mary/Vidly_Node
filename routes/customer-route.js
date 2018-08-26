@@ -1,3 +1,4 @@
+const auth = require('../middleware/auth')
 const express = require('express')
 const router = express.Router()
 
@@ -29,7 +30,7 @@ router.post('/', async (req, res) => {
   res.send(customer)
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
   // validate user input
   const { error } = validateCustomer(req.body)
   if(error) return res.status(400).send(error.details[0].message)
@@ -44,7 +45,7 @@ router.put('/:id', async (req, res) => {
   res.send(customer)
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   const customer = await Customer.findByIdAndRemove(req.params.id)
   if(!customer) return res.status(404).send('The customer with given ID was not found')
   res.send(customer)
