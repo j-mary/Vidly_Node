@@ -6,6 +6,7 @@ const customers = require('./routes/customer-route')
 const movies = require('./routes/movie-route')
 const rentals = require('./routes/rental-route')
 const users = require('./routes/user-route')
+const auth = require('./routes/auth-route')
 const express = require('express')
 const app = express()
 
@@ -19,6 +20,7 @@ app.use('/api/customers', customers)
 app.use('/api/movies', movies)
 app.use('/api/rentals', rentals)
 app.use('/api/users', users)
+app.use('/api/auth', auth)
 
 app.get('/', (req, res) => {
   res.send('Vidly')
